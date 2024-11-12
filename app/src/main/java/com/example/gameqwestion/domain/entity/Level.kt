@@ -1,4 +1,4 @@
-package com.example.gameqwestion.domain
+package com.example.gameqwestion.domain.entity
 
 enum class Level {
 
