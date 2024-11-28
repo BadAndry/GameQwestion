@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.gameqwestion.R
 import com.example.gameqwestion.databinding.FragmentChooseLevelBinding
 import com.example.gameqwestion.domain.entity.Level
-
 class FragmentChoseLevel : Fragment() {
 
     private var _binding: FragmentChooseLevelBinding?= null
@@ -41,10 +41,7 @@ class FragmentChoseLevel : Fragment() {
 
     }
     private fun launceChoseLevel(level: Level) {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FragmentGame.newInstance(level))
-            .addToBackStack(FragmentGame.NAME)
-            .commit()
+        findNavController().navigate(FragmentChoseLevelDirections.actionFragmentChoseLevelToFragmentGame(level))
     }
 
     override fun onDestroyView() {
@@ -54,12 +51,5 @@ class FragmentChoseLevel : Fragment() {
 
 
 
-    companion object{
 
-        const val NAME = "FragmentChoseLevel"
-
-       fun newInstance(): FragmentChoseLevel{
-             return FragmentChoseLevel()
-         }
-    }
 }

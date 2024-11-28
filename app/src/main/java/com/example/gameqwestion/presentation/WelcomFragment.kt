@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.gameqwestion.R
 import com.example.gameqwestion.databinding.FragmentWelcomeBinding
 import java.util.jar.Attributes.Name
@@ -32,10 +33,7 @@ class WelcomeFragment : Fragment() {
         }
     }
     private fun launchLevelFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.main_container, FragmentChoseLevel.newInstance())
-            .addToBackStack(FragmentChoseLevel.NAME)
-            .commit()
+        findNavController().navigate(R.id.action_welcomeFragment_to_fragmentChoseLevel)
     }
 
     override fun onDestroyView() {
