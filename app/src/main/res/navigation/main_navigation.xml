@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.gameqwestion.presentation.WelcomeFragment"
+        android:label="WelcomeFragment" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_fragmentChoseLevel"
+            app:destination="@id/fragmentChoseLevel" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChoseLevel"
+        android:name="com.example.gameqwestion.presentation.FragmentChoseLevel"
+        android:label="fragment_choose_level"
+        tools:layout="@layout/fragment_choose_level" >
+        <action
+            android:id="@+id/action_fragmentChoseLevel_to_fragmentGame"
+            app:destination="@id/fragmentGame" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGame"
+        android:name="com.example.gameqwestion.presentation.FragmentGame"
+        android:label="fragment_game"
+        tools:layout="@layout/fragment_game" >
+        <action
+            android:id="@+id/action_fragmentGame_to_fragmentGameFinish"
+            app:destination="@id/fragmentGameFinish"
+            app:popUpTo="@id/fragmentChoseLevel"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="level"
+            app:argType="com.example.gameqwestion.domain.entity.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentGameFinish"
+        android:name="com.example.gameqwestion.presentation.FragmentGameFinish"
+        android:label="fragment_game_finish"
+        tools:layout="@layout/fragment_game_finish" >
+        <argument
+            android:name="gameResult"
+            app:argType="com.example.gameqwestion.domain.entity.GameResult" />
+    </fragment>
+</navigation>
